@@ -3,12 +3,14 @@ package server
 import (
 	"context"
 	"encoding/json"
-	"github.com/rs/zerolog/log"
+	"github.com/rs/zerolog"
 	"os"
+	"time"
 )
 
 func ReadConfig(ctx context.Context) (*Config, error) {
-	log.Info().Ctx(ctx).Msg("Start loading appConfig")
+	logger := zerolog.Ctx(ctx)
+	logger.Info().Msg("Start loading appConfig")
 	configData, err := os.ReadFile("./config_files/keys.json")
 	if err != nil {
 		return nil, err
@@ -21,6 +23,17 @@ func ReadConfig(ctx context.Context) (*Config, error) {
 		return nil, err
 	}
 
-	log.Info().Ctx(ctx).Msg("End loading appConfig")
+	logger.Info().Msg("End loading appConfig")
 	return config, nil
+}
+
+func ConfigLogger(ctx context.Context) context.Context {
+	loggerOutPut := zerolog.ConsoleWriter{
+		Out:        os.Stdout,
+		TimeFormat: time.RFC3339,
+	}
+	logger := zerolog.New(loggerOutPut).With().Timestamp().Logger()
+	ctx = logger.WithContext(ctx)
+
+	return ctx
 }
