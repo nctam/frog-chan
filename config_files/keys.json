@@ -1,0 +1,13 @@
+{
+  "bot_token": "$BOT_TOKEN",
+  "discord_channels": [
+    {
+      "id": "812559685416386590",
+      "description": "Voz Mech - kopi-corner"
+    },
+    {
+      "id": "1161917579271614465",
+      "description": "Test channel"
+    }
+  ]
+}
