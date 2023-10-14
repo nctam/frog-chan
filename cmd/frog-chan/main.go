@@ -12,19 +12,23 @@ import (
 
 var (
 	appConfig    *server.Config
-	readyHandler = handlers.Ready
 	logger       *zerolog.Logger
+	readyHandler = handlers.Ready
+	autoRep      = handlers.AutoReply
 )
 
 func main() {
 	ctx := context.TODO()
-	ctx = logger.WithContext(ctx)
+	ctx = server.ConfigLogger(ctx)
+	appConfig = server.ReadConfig(ctx)
 	session, _ := discord.New("Bot " + appConfig.BotToken)
 	session.AddHandler(readyHandler(ctx))
+	session.AddHandler(autoRep(ctx, appConfig))
 	if err := session.Open(); err != nil {
 		logger.Error().Msg("Failed to open session")
 	}
 
+	handlers.RegisterHealthCheck()
 	defer func(sessionHandler *discord.Session) {
 		err := sessionHandler.Close()
 		if err != nil {
@@ -35,16 +39,4 @@ func main() {
 	signal.Notify(stop, os.Interrupt)
 	<-stop
 	logger.Debug().Msg("Graceful shutdown")
-}
-
-func init() {
-	ctx := context.TODO()
-	ctx = server.ConfigLogger(ctx)
-	conf, err := server.ReadConfig(ctx)
-	logger = zerolog.Ctx(ctx)
-	if err != nil {
-		logger.Error().Msg("Failed to load appConfig")
-		return
-	}
-	appConfig = conf
 }

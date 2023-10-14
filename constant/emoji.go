@@ -1,0 +1,6 @@
+package constant
+
+const (
+	Tsk     = "tsk:1063110732767567994"
+	Aragorn = "aragorn_megusta:1049991923697467392"
+)

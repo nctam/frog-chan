@@ -1,0 +1,32 @@
+bot-token: ${BOT_TOKEN}
+
+toggles:
+  - name: autoReplyFonFon
+    enabled: true
+  - name: autoReply
+    enabled: true
+
+channels:
+  - 812559685416386590 #onlyfans-hd
+  - 1161917579271614465 # test channel
+
+target-users:
+  - nickname: fonFon
+    id: 367309546823221250
+    probability: 0.9
+    universal-set: 100
+    channel-ids:
+      - 872829278872567890
+  - nickname: pong
+    id: 390488049420730369
+    probability: 0.9
+    universal-set: 100
+    channel-ids:
+      - 872829278872567890
+  - nickname: tcmik
+    probability: 0.5
+    id: 666563738370834434
+    universal-set: 100
+    channel-ids:
+      - 872829278872567890 # onlyfans-hd
+      - 1161917579271614465 # test channel
