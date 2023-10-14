@@ -8,57 +8,10 @@ import (
 	"kaeru.chan/voz/message"
 	"kaeru.chan/voz/server"
 	"kaeru.chan/voz/utils"
-	"strings"
 )
 
 const (
 	fonfonLogTag = "FonFon"
-)
-
-var (
-	fonfonMesage = map[string]message.TargetMessage{
-		"đĩ": {
-			Message:    "đồ đĩ",
-			Emoji:      constant.Tsk,
-			ReactEmoji: constant.Aragorn,
-			Url:        "",
-		},
-		"bitch": {
-			Message:    "",
-			Emoji:      constant.Tsk,
-			ReactEmoji: "",
-		},
-		"buscu": {
-			Message:    "",
-			Emoji:      "",
-			ReactEmoji: "",
-		},
-		"ktv": {
-			Message:    "",
-			Emoji:      "",
-			ReactEmoji: "",
-		},
-		"lấy": {
-			Message:    "",
-			Emoji:      "",
-			ReactEmoji: "",
-		},
-		"mua": {
-			Message:    "",
-			Emoji:      "",
-			ReactEmoji: "",
-		},
-		"póng": {
-			Message:    "póng póng cc, hãy để trú yên, trú còn bận đi úp bô",
-			Emoji:      constant.Tsk,
-			ReactEmoji: "",
-		},
-		"trú": {
-			Message:    "trú bận đi úp bô gồi",
-			Emoji:      constant.Tsk,
-			ReactEmoji: "",
-		},
-	}
 )
 
 func HandleFonFonMessage(ctx context.Context, _ *server.Config, user *server.TargetUser, s *discord.Session, r *discord.MessageCreate) {
@@ -68,13 +21,13 @@ func HandleFonFonMessage(ctx context.Context, _ *server.Config, user *server.Tar
 		return
 	}
 
-	if !utils.ShouldAimTo(ctx, user.Probability, user.UniversalSet) {
+	if !utils.ShouldReply(ctx, user.Probability, user.UniversalSet) {
 		logger.Info().Str(constant.AutoRepLogTag, fonfonLogTag).Msgf("You're lucky this time %s", user.Nickname)
 		return
 	}
 
-	logger.Info().Str(constant.AutoRepLogTag, fonfonLogTag).Msg("FonFon detected, start bullying")
-	msg := detectMessage(r)
+	logger.Info().Str(constant.AutoRepLogTag, fonfonLogTag).Msg("FonFon detected, get messages")
+	msg := message.PickMessage(message.DetectMessage(constant.FonfonMessages, r))
 	if msg == nil {
 		logger.Warn().Str(constant.AutoRepLogTag, fonfonLogTag).Msg("Don't know what to say, skip")
 		return
@@ -91,13 +44,4 @@ func HandleFonFonMessage(ctx context.Context, _ *server.Config, user *server.Tar
 		logger.Error().Str(constant.AutoRepLogTag, fonfonLogTag).Msgf("Unable to reply message", err.Error())
 	}
 
-}
-
-func detectMessage(r *discord.MessageCreate) *message.TargetMessage {
-	for k, v := range fonfonMesage {
-		if strings.Contains(r.Content, k) {
-			return &v
-		}
-	}
-	return nil
 }

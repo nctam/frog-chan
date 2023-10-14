@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func ShouldAimTo(ctx context.Context, prob float64, universalSet int) bool {
+func ShouldReply(ctx context.Context, prob float64, universalSet int) bool {
 	logger := zerolog.Ctx(ctx)
 	counter := 0
 	for i := 0; i < universalSet; i++ {
@@ -20,7 +20,7 @@ func ShouldAimTo(ctx context.Context, prob float64, universalSet int) bool {
 	logger.Info().Msgf("Total votes: %d", counter)
 
 	decision := float64(counter)/float64(universalSet) < prob
-	logger.Info().Msgf("Aim decision: %v", decision)
+	logger.Info().Msgf("Reply decision: %v", decision)
 
 	return decision
 }

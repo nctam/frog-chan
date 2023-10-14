@@ -7,7 +7,8 @@ toggles:
     enabled: true
 
 channels:
-  - 812559685416386590 #onlyfans-hd
+  - 872829278872567890 #onlyfans-hd
+  - 812559685416386590 # kopi-corner
   - 1161917579271614465 # test channel
 
 target-users:
@@ -17,6 +18,7 @@ target-users:
     universal-set: 100
     channel-ids:
       - 872829278872567890
+      - 812559685416386590
   - nickname: pong
     id: 390488049420730369
     probability: 0.9
@@ -30,3 +32,4 @@ target-users:
     channel-ids:
       - 872829278872567890 # onlyfans-hd
       - 1161917579271614465 # test channel
+      - 812559685416386590 # kopi-corner

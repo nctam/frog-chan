@@ -19,6 +19,10 @@ var (
 func AutoReply(ctx context.Context, config *server.Config) func(s *discord.Session, r *discord.MessageCreate) {
 	logger := zerolog.Ctx(ctx)
 	return func(s *discord.Session, r *discord.MessageCreate) {
+		if r.Author.ID == constant.Bot {
+			logger.Info().Str(constant.AutoRepLogTag, "Handler").Msg("Bot detected, skip replying")
+			return
+		}
 		userName := r.Author.Username
 		invokedUser := utils.FindUserByID(r.Author.ID, config.TargetUsers)
 		if invokedUser != nil {
@@ -27,7 +31,7 @@ func AutoReply(ctx context.Context, config *server.Config) func(s *discord.Sessi
 		}
 
 		switch userName {
-		case constant.FonFonName, constant.EchChan:
+		case constant.FonFonName:
 			handleFonFon(ctx, config, invokedUser, s, r)
 		case constant.PongChanName:
 			handlePongChan(ctx, config, invokedUser, s, r)
