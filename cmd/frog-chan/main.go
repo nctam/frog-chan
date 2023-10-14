@@ -28,7 +28,7 @@ func main() {
 		logger.Error().Msg("Failed to open session")
 	}
 
-	handlers.RegisterHealthCheck()
+	//handlers.RegisterHealthCheck()
 	defer func(sessionHandler *discord.Session) {
 		err := sessionHandler.Close()
 		if err != nil {
