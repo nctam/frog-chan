@@ -13,12 +13,21 @@ type TargetMessage struct {
 	ReactEmoji string
 	Url        string
 	HasRef     bool
+	TagUser    string
 }
 
 func (m *TargetMessage) Build() string {
 	res := m.Message
+	if m.TagUser != "" {
+		res = fmt.Sprintf("<@%s> %s", m.TagUser, res)
+	}
 	if m.Emoji != "" {
-		res = fmt.Sprintf("%s <:%s>", res, m.Emoji)
+		emoji := m.Emoji
+		if strings.HasPrefix(m.Emoji, "a:") { // custom emoji(animated)
+			res = fmt.Sprintf("%s <%s>", res, emoji)
+		} else {
+			res = fmt.Sprintf("%s <:%s>", res, emoji)
+		}
 	}
 
 	return res

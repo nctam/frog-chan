@@ -44,8 +44,14 @@ func HandleMessage(ctx context.Context, config *server.Config, _ *server.TargetU
 		}
 	}
 
-	_, err := s.ChannelMessageSendReply(r.ChannelID, msg.Build(), r.Reference())
-	if err != nil {
-		logger.Error().Str(constant.AutoRepLogTag, communityLogTag).Msgf("Unable to reply message", err.Error())
+	var sendMsgErr error
+	if msg.HasRef {
+		_, sendMsgErr = s.ChannelMessageSendReply(r.ChannelID, msg.Build(), r.Reference())
+	} else {
+		_, sendMsgErr = s.ChannelMessageSend(r.ChannelID, msg.Build())
+	}
+
+	if sendMsgErr != nil {
+		logger.Error().Str(constant.AutoRepLogTag, communityLogTag).Msgf("Unable to reply message", sendMsgErr.Error())
 	}
 }

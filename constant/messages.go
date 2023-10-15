@@ -54,7 +54,7 @@ var (
 		},
 		"join fast,đâm,theo": {
 			{
-				Message:    "Có tiền không mà theo?",
+				Message:    "Có cho tiền không mà kêu theo?",
 				Emoji:      Tsk,
 				ReactEmoji: Aragorn,
 				Url:        "",
@@ -65,6 +65,37 @@ var (
 				Emoji:      Tsk,
 				ReactEmoji: Aragorn,
 				Url:        "",
+			},
+		},
+		"úp bô,úp pô,bô,pô": {
+			{
+				Message:    "Bô bô cl, úp hoài",
+				Emoji:      Tsk,
+				ReactEmoji: What,
+				Url:        "",
+				HasRef:     true,
+			},
+			{
+				Message:    "Bô này có vẻ thơm",
+				Emoji:      SexyPika,
+				ReactEmoji: Aragorn,
+				Url:        "",
+				TagUser:    EchChanID,
+			},
+			{
+				Message:    "Bô bô cc",
+				Emoji:      WibuSpank,
+				ReactEmoji: Tsk,
+				Url:        "",
+			},
+		},
+		"safe": {
+			{
+				Message:    "Mua bcs chưa?",
+				Emoji:      SexyPika,
+				ReactEmoji: What,
+				Url:        "",
+				HasRef:     true,
 			},
 		},
 	}
@@ -93,6 +124,28 @@ var (
 				ReactEmoji: Ree,
 				Url:        "",
 				HasRef:     true,
+			},
+		},
+		"úp bô,úp pô,bô,pô": {
+			{
+				Message:    "Bô bô cl, úp hoài",
+				Emoji:      Tsk,
+				ReactEmoji: What,
+				Url:        "",
+				HasRef:     true,
+			},
+			{
+				Message:    "Bô này có vẻ thơm",
+				Emoji:      SexyPika,
+				ReactEmoji: Aragorn,
+				Url:        "",
+				TagUser:    EchChanID,
+			},
+			{
+				Message:    "Bô bô cc",
+				Emoji:      WibuSpank,
+				ReactEmoji: Tsk,
+				Url:        "",
 			},
 		},
 	}
