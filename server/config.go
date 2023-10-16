@@ -1,10 +1,11 @@
 package server
 
 type Config struct {
-	BotToken    string       `yaml:"bot-token"`
-	Channels    []string     `yaml:"channels"`
-	TargetUsers []TargetUser `yaml:"target-users"`
-	Toggles     []Toggle     `yaml:"toggles"`
+	BotToken      string       `yaml:"bot-token"`
+	Channels      []string     `yaml:"channels"`
+	TargetUsers   []TargetUser `yaml:"target-users"`
+	Toggles       []Toggle     `yaml:"toggles"`
+	ExcludedUsers []string     `yaml:"excluded-users"`
 }
 
 type TargetUser struct {

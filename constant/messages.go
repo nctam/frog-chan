@@ -109,7 +109,7 @@ var (
 	}
 
 	CommunityMessages = map[string][]message.TargetMessage{
-		"bd,đĩ đực,gei lord,gay,gei": {
+		"bd,đĩ đực,gei lord, gay,gei": {
 			{
 				Message:    "kingtomb",
 				Emoji:      Tsk,
@@ -153,6 +153,21 @@ var (
 				Message:    "Bô bô cc",
 				Emoji:      WibuSpank,
 				ReactEmoji: Tsk,
+				Url:        "",
+			},
+		},
+		"chửi": {
+			{
+				Message:    "đồ đĩ",
+				Emoji:      Tsk,
+				ReactEmoji: Aragorn,
+				Url:        "",
+				HasRef:     true,
+			},
+			{
+				Message:    "ngộ ha, tự nhiên chửi người ta",
+				Emoji:      Tsk,
+				ReactEmoji: Aragorn,
 				Url:        "",
 			},
 		},

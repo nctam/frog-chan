@@ -39,8 +39,19 @@ func HandlePongChanMessage(ctx context.Context, config *server.Config, user *ser
 		}
 	}
 
-	_, err := s.ChannelMessageSendReply(r.ChannelID, msg.Build(), r.Reference())
-	if err != nil {
-		logger.Error().Str(constant.AutoRepLogTag, pongLogTag).Msgf("Unable to reply message", err.Error())
+	if msg.Message == "đồ đĩ" {
+		taggedUserID := utils.ExtractTaggedUserID(r.Content, config)
+		if taggedUserID != "" {
+			msg.TagUser = taggedUserID
+		}
+		_, err := s.ChannelMessageSend(r.ChannelID, msg.Build())
+		if err != nil {
+			logger.Error().Str(constant.AutoRepLogTag, pongLogTag).Msgf("Unable to reply message", err.Error())
+		}
+	} else {
+		_, err := s.ChannelMessageSendReply(r.ChannelID, msg.Build(), r.Reference())
+		if err != nil {
+			logger.Error().Str(constant.AutoRepLogTag, pongLogTag).Msgf("Unable to reply message", err.Error())
+		}
 	}
 }

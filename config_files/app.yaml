@@ -42,3 +42,7 @@ target-users:
       - 1161917579271614465 # test channel
       - 812166962607947867 # kee-bee-talk
       - 1100273795962507376 # i-to-vua-moi-nghe
+
+excluded-users:
+  - 1161895776780304415
+  - 666563738370834434
