@@ -98,6 +98,14 @@ var (
 				HasRef:     true,
 			},
 		},
+		"đĩ,bitch,đũy,dũy,dĩ,đỷ,đủy,dủy,dỉ": {
+			{
+				Message:    "đồ đĩ",
+				Emoji:      Tsk,
+				ReactEmoji: Aragorn,
+				Url:        "",
+			},
+		},
 	}
 
 	CommunityMessages = map[string][]message.TargetMessage{
