@@ -21,7 +21,7 @@ func HandleMessage(ctx context.Context, config *server.Config, _ *server.TargetU
 		return
 	}
 
-	prob := 0.4
+	prob := 0.7
 	if r.Author.ID == constant.EchChanID {
 		prob = 1.0
 	}
