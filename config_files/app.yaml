@@ -19,19 +19,26 @@ target-users:
     probability: 0.9
     universal-set: 100
     channel-ids:
-      - 872829278872567890
-      - 812559685416386590
+      - 872829278872567890 # onlyfans-hd
+      - 812559685416386590 # kopi-corner
+      - 812166962607947867 # kee-bee-talk
+      - 1100273795962507376 # i-to-vua-moi-nghe
   - nickname: pong
     id: 390488049420730369
     probability: 0.9
     universal-set: 100
     channel-ids:
-      - 872829278872567890
+      - 872829278872567890 # onlyfans-hd
+      - 812559685416386590 # kopi-corner
+      - 812166962607947867 # kee-bee-talk
+      - 1100273795962507376 # i-to-vua-moi-nghe
   - nickname: tcmik
     probability: 0.5
     id: 666563738370834434
     universal-set: 100
     channel-ids:
       - 872829278872567890 # onlyfans-hd
-      - 1161917579271614465 # test channel
       - 812559685416386590 # kopi-corner
+      - 1161917579271614465 # test channel
+      - 812166962607947867 # kee-bee-talk
+      - 1100273795962507376 # i-to-vua-moi-nghe
