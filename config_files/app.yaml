@@ -16,7 +16,7 @@ channels:
 target-users:
   - nickname: fonFon
     id: 367309546823221250
-    probability: 0.9
+    probability: 0.5
     universal-set: 100
     channel-ids:
       - 872829278872567890 # onlyfans-hd
@@ -25,7 +25,7 @@ target-users:
       - 1100273795962507376 # i-to-vua-moi-nghe
   - nickname: pong
     id: 390488049420730369
-    probability: 0.9
+    probability: 0.5
     universal-set: 100
     channel-ids:
       - 872829278872567890 # onlyfans-hd

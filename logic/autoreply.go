@@ -21,10 +21,10 @@ func HandleMessage(ctx context.Context, config *server.Config, _ *server.TargetU
 		return
 	}
 
-	prob := 0.7
-	if r.Author.ID == constant.EchChanID {
-		prob = 1.0
-	}
+	prob := 0.5
+	//if r.Author.ID == constant.EchChanID {
+	//	prob = 1.0
+	//}
 
 	if !utils.ShouldReply(ctx, prob, 100) {
 		logger.Info().Str(constant.AutoRepLogTag, communityLogTag).Msgf("You're lucky this time %s", r.Author.Username)
