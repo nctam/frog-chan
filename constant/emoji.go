@@ -7,5 +7,6 @@ const (
 	Ree       = "ree:904720707026575391"
 	What      = "what:894868339170615336"
 	SexyPika  = "a:sexypika:869302137279090698"
+	SexyPepe  = "a:pepesexy:840894452338917397"
 	WibuSpank = "a:wibuspank:852781547017994242"
 )

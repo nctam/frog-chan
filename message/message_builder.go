@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-type TargetMessage struct {
+type Template struct {
 	Message    string
 	Emoji      string
 	ReactEmoji string
@@ -16,10 +16,10 @@ type TargetMessage struct {
 	TagUser    string
 }
 
-func (m *TargetMessage) Build() string {
+func (m *Template) Build() string {
 	res := m.Message
 	if m.TagUser != "" {
-		res = fmt.Sprintf("<@%s> %s", m.TagUser, res)
+		res = fmt.Sprintf("%s <@%s>", res, m.TagUser)
 	}
 	if m.Emoji != "" {
 		emoji := m.Emoji
@@ -33,7 +33,7 @@ func (m *TargetMessage) Build() string {
 	return res
 }
 
-func PickMessage(messages []TargetMessage) *TargetMessage {
+func PickMessage(messages []Template) *Template {
 	if messages == nil || len(messages) == 0 {
 		return nil
 	}
@@ -42,7 +42,7 @@ func PickMessage(messages []TargetMessage) *TargetMessage {
 	return &messages[messageIndex]
 }
 
-func DetectMessage(message map[string][]TargetMessage, r *discord.MessageCreate) []TargetMessage {
+func DetectMessage(message map[string][]Template, r *discord.MessageCreate) []Template {
 	for k, v := range message {
 		keys := strings.Split(k, ",")
 		for _, key := range keys {

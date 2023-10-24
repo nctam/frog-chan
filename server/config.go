@@ -1,11 +1,15 @@
 package server
 
 type Config struct {
-	BotToken      string       `yaml:"bot-token"`
-	Channels      []string     `yaml:"channels"`
-	TargetUsers   []TargetUser `yaml:"target-users"`
-	Toggles       []Toggle     `yaml:"toggles"`
-	ExcludedUsers []string     `yaml:"excluded-users"`
+	BotToken        string       `yaml:"bot-token"`
+	Channels        []string     `yaml:"channels"`
+	TargetUsers     []TargetUser `yaml:"target-users"`
+	Toggles         []Toggle     `yaml:"toggles"`
+	ExcludedUsers   []string     `yaml:"excluded-users"`
+	TestModeEnabled bool         `yaml:"test-mode-enabled"`
+	Probability     float64      `yaml:"probability"`
+	UniversalSet    int          `yaml:"universal-set"`
+	Env             string       `yaml:"env"`
 }
 
 type TargetUser struct {
