@@ -19,7 +19,7 @@ bots:
   - 814752438384721950 # bot may day
 #  - 666563738370834434
 
-probability: 0.3
+probability: 0.2
 universal-set: 100
 
 message-pattern: '(\s?)(chửi|đĩ|ktv|buscu|póng chan|pông nan|long xiên|join fast|bô|safe|bê đê|pê đê|buê đuê|nghèo)(\s?)'
