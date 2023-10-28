@@ -28,7 +28,7 @@ func init() {
 
 func (g *GeneralAutoReply) SendReply(ctx context.Context, s *discord.Session, r *discord.MessageCreate) {
 	log := zerolog.Ctx(ctx).With().Str(communityLogTag, "SendReply").Logger()
-	if !utils.ShouldReply(ctx, config) {
+	if !utils.ShouldReply(ctx, r.Author.ID, config) {
 		log.Warn().Msgf("Reject reply user: %s", r.Author.Username)
 		return
 	}

@@ -13,8 +13,12 @@ const (
 	logTag = "Utils"
 )
 
-func ShouldReply(ctx context.Context, config *server.Config) bool {
+func ShouldReply(ctx context.Context, userID string, config *server.Config) bool {
 	logger := zerolog.Ctx(ctx).With().Str(logTag, "ShouldReply").Logger()
+	if StringContains(config.PriorUsers, userID) {
+		logger.Info().Msgf("Prior user: %s found, start reply", userID)
+		return true
+	}
 	counter := 0
 	for i := 0; i < config.UniversalSet; i++ {
 		rand.Seed(uint64(time.Now().UnixNano()))

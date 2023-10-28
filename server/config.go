@@ -8,4 +8,5 @@ type Config struct {
     UniversalSet   int      `yaml:"universal-set"`
     Env            string   `yaml:"env"`
     MessagePattern string   `yaml:"message-pattern"`
+    PriorUsers     []string `yaml:"prior-users"`
 }

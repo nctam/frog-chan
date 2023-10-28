@@ -12,6 +12,9 @@ excluded-users:
   - 1161895776780304415 # frog-chan
 #  - 666563738370834434 # tcmik
 
+prior-users:
+  - 666563738370834434
+
 probability: 0.3
 universal-set: 100
 
