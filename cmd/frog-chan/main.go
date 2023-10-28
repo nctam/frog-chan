@@ -15,6 +15,7 @@ var (
 	config       *server.Config
 	readyHandler = handlers.Ready
 	autoRep      = handlers.AutoReply
+	autoReact    = handlers.AutoReact
 )
 
 func init() {
@@ -28,6 +29,7 @@ func main() {
 	session, _ := discord.New("Bot " + config.BotToken)
 	session.AddHandler(readyHandler(ctx))
 	session.AddHandler(autoRep(ctx))
+	session.AddHandler(autoReact(ctx))
 	if err := session.Open(); err != nil {
 		logger.Error().Msg("Failed to open session")
 	}

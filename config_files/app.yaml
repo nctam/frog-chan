@@ -15,6 +15,10 @@ excluded-users:
 prior-users:
   - 666563738370834434
 
+bots:
+  - 814752438384721950 # bot may day
+#  - 666563738370834434
+
 probability: 0.3
 universal-set: 100
 
