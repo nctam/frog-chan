@@ -72,7 +72,7 @@ func ValidateExcludedUser(f logic.AutoReplyFunc) logic.AutoReplyFunc {
 
 func ValidateCurseRequest(f logic.AutoReplyFunc) logic.AutoReplyFunc {
 	return func(ctx context.Context, s *discord.Session, c *discord.MessageCreate) {
-		log := zerolog.Ctx(ctx).With().Str(logTag, "ValidateExcludedUser").Logger()
+		log := zerolog.Ctx(ctx).With().Str(logTag, "ValidateCurseRequest").Logger()
 		curseMsgPattern := "(<@1161895776780304415> chửi <@[0-9]+>)(\\s?)"
 		match, err := regexp.MatchString(curseMsgPattern, c.Content)
 		if err != nil || !match {

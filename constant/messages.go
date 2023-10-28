@@ -6,7 +6,7 @@ var (
 	CommunityMessages = map[string][]message.Template{
 		"bê đê,pê đê,buê đuê": {
 			{
-				Message:    "kingtomb",
+				Message:    "đồng ý, thật kingtomb",
 				Emoji:      Tsk,
 				ReactEmoji: Aragorn,
 				Url:        "",
@@ -18,6 +18,7 @@ var (
 				ReactEmoji: Aragorn,
 				Url:        "https://media.discordapp.net/attachments/880833106297381014/1161861154839208007/image.png?ex=6539d685&is=65276185&hm=0efcc32bfdf9c1b4cbc511340d620598c28566a2900656def07dfc2b05d04efc&=&width=1520&height=312",
 				HasRef:     true,
+				TagUsers:   []string{"596658100841480192"},
 			},
 			{
 				Message:    "Có người bảo em rằng",
@@ -25,6 +26,7 @@ var (
 				ReactEmoji: Aragorn,
 				Url:        "https://cdn.discordapp.com/attachments/880833106297381014/1164216566393622608/image.png?ex=6542682b&is=652ff32b&hm=3542d2fb4277756f3fed4de82f20715bd21f4e77bb79c8c4b229e70d8d65b68a&",
 				HasRef:     true,
+				TagUsers:   []string{"632196353354629160"},
 			},
 		},
 		"nghèo": {
