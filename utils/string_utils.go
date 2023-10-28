@@ -1,27 +1,43 @@
 package utils
 
 import (
+	"context"
+	"github.com/rs/zerolog"
+	"kaeru.chan/voz/constant"
 	"kaeru.chan/voz/server"
 	"regexp"
 	"strings"
 )
 
 const (
-	taggedUserRegex = "<@[0-9]+>"
+	taggedUserRegex = "(\\w?)<@[0-9]+>(\\w?)"
 )
 
-func ExtractTaggedUserID(msg string, config *server.Config) string {
-	pattern := regexp.MustCompile(taggedUserRegex)
-	if pattern == nil {
-		return ""
-	}
-	atIndex := strings.Index(msg, "@")
-	closeTagIndex := strings.Index(msg, ">")
-
-	userID := msg[atIndex+1 : closeTagIndex]
-	if StringContains(config.ExcludedUsers, userID) {
-		return ""
+func ExtractTaggedUserID(ctx context.Context, msg string, config *server.Config) []string {
+	log := zerolog.Ctx(ctx).With().Str("Utils", "ExtractTaggedUserID").Logger()
+	var users []string
+	match, err := regexp.MatchString(taggedUserRegex, msg)
+	if err != nil || !match {
+		log.Debug().Msgf("No tagged user detected: '%s'", msg)
+		return nil
 	}
 
-	return userID
+	for {
+		atIndex := strings.Index(msg, "@")
+
+		if atIndex < 0 {
+			break
+		}
+
+		closeTagIndex := strings.Index(msg, ">")
+		userID := msg[atIndex+1 : closeTagIndex]
+		msg = msg[closeTagIndex+1:]
+		if StringContains(config.ExcludedUsers, userID) || constant.EchChanID == userID {
+			log.Debug().Msgf("User is excluded: %s", userID)
+			continue
+		}
+		users = append(users, userID)
+	}
+
+	return users
 }

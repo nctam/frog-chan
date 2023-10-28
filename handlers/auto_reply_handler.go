@@ -3,40 +3,29 @@ package handlers
 import (
 	"context"
 	discord "github.com/bwmarrin/discordgo"
-	"github.com/rs/zerolog"
-	"kaeru.chan/voz/constant"
+
+	"kaeru.chan/voz/decorator"
 	"kaeru.chan/voz/logic"
-	"kaeru.chan/voz/server"
-	"kaeru.chan/voz/utils"
 )
 
 var (
-	handleMsg      = logic.HandleMessage
-	handleFonFon   = logic.HandleFonFonMessage
-	handlePongChan = logic.HandlePongChanMessage
+	autoRep               = logic.GeneralAutoReply{}
+	channelValidator      = decorator.ValidateChannel
+	messageValidator      = decorator.ValidateMessage
+	excludedUserValidator = decorator.ValidateExcludedUser
+	curseRequestValidator = decorator.ValidateCurseRequest
+	validate              = decorator.Validate
 )
 
-func AutoReply(ctx context.Context, config *server.Config) func(s *discord.Session, r *discord.MessageCreate) {
-	logger := zerolog.Ctx(ctx)
+func AutoReply(ctx context.Context) func(s *discord.Session, r *discord.MessageCreate) {
 	return func(s *discord.Session, r *discord.MessageCreate) {
-		if r.Author.ID == constant.Bot {
-			logger.Info().Str(constant.AutoRepLogTag, "Handler").Msg("Bot detected, skip replying")
-			return
+		validations := []decorator.AutoReplyValidation{
+			channelValidator,
+			messageValidator,
+			excludedUserValidator,
+			curseRequestValidator,
 		}
-		userName := r.Author.Username
-		invokedUser := utils.FindUserByID(r.Author.ID, config.TargetUsers)
-		if invokedUser != nil {
-			logger.Info().Str(constant.AutoRepLogTag, "Handler").Msg("Target user found")
-			userName = invokedUser.Nickname
-		}
-
-		switch userName {
-		case constant.FonFonName:
-			handleFonFon(ctx, config, invokedUser, s, r)
-		case constant.PongChanName:
-			handlePongChan(ctx, config, invokedUser, s, r)
-		default:
-			handleMsg(ctx, config, invokedUser, s, r)
-		}
+		f := validate(autoRep.SendReply, validations...)
+		f(ctx, s, r)
 	}
 }

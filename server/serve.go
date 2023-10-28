@@ -8,9 +8,19 @@ import (
 	"time"
 )
 
-func ReadConfig(ctx context.Context) *Config {
-	logger := zerolog.Ctx(ctx)
-	logger.Info().Msg("Start loading appConfig")
+var (
+	AppConfig *Config
+)
+
+func init() {
+	AppConfig = readConfig()
+}
+
+func readConfig() *Config {
+	ctx := context.TODO()
+	ctx = ConfigLogger().WithContext(ctx)
+	logger := zerolog.Ctx(ctx).With().Str("Server", "ReadConfig").Logger()
+	logger.Debug().Msg("Start loading appConfig")
 	configData, err := os.ReadFile("./config_files/app.yaml")
 	if err != nil {
 		logger.Warn().Msg("Failed to read config file")
@@ -26,17 +36,21 @@ func ReadConfig(ctx context.Context) *Config {
 		return &Config{}
 	}
 
-	logger.Info().Msg("End loading appConfig")
+	if config.Env == "test" {
+		config.Probability = 1
+		config.UniversalSet = 1
+		config.Channels = config.Channels[:1] // use test channel only
+		//config.ExcludedUsers = make([]string, 0)
+	}
+
+	logger.Debug().Msg("End loading appConfig")
 	return config
 }
 
-func ConfigLogger(ctx context.Context) context.Context {
+func ConfigLogger() zerolog.Logger {
 	loggerOutPut := zerolog.ConsoleWriter{
 		Out:        os.Stdout,
 		TimeFormat: time.RFC3339,
 	}
-	logger := zerolog.New(loggerOutPut).With().Timestamp().Logger()
-	ctx = logger.WithContext(ctx)
-
-	return ctx
+	return zerolog.New(loggerOutPut).With().Timestamp().Logger()
 }

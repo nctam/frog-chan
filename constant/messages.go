@@ -3,24 +3,75 @@ package constant
 import "kaeru.chan/voz/message"
 
 var (
-	FonfonMessages = map[string][]message.TargetMessage{
-		"đĩ,bitch": {
+	CommunityMessages = map[string][]message.Template{
+		"bê đê,pê đê,buê đuê": {
 			{
-				Message:    "đồ đĩ",
+				Message:    "kingtomb",
 				Emoji:      Tsk,
 				ReactEmoji: Aragorn,
 				Url:        "",
+				HasRef:     true,
+			},
+			{
+				Message:    "Có người bảo em rằng",
+				Emoji:      SexyPepe,
+				ReactEmoji: Aragorn,
+				Url:        "https://media.discordapp.net/attachments/880833106297381014/1161861154839208007/image.png?ex=6539d685&is=65276185&hm=0efcc32bfdf9c1b4cbc511340d620598c28566a2900656def07dfc2b05d04efc&=&width=1520&height=312",
+				HasRef:     true,
+			},
+			{
+				Message:    "Có người bảo em rằng",
+				Emoji:      SexyPepe,
+				ReactEmoji: Aragorn,
+				Url:        "https://cdn.discordapp.com/attachments/880833106297381014/1164216566393622608/image.png?ex=6542682b&is=652ff32b&hm=3542d2fb4277756f3fed4de82f20715bd21f4e77bb79c8c4b229e70d8d65b68a&",
+				HasRef:     true,
 			},
 		},
-		"ktv,bu cu, buscu": {
+		"nghèo": {
 			{
-				Message:    "buông bỏ đặc cầu đi trú",
+				Message:    "Nghèo thì đứng sang 1 bên?",
 				Emoji:      Tsk,
 				ReactEmoji: Aragorn,
 				Url:        "",
+				HasRef:     true,
 			},
 		},
-		"póng,póng chan,pông nan": {
+		"bô": {
+			{
+				Message:    "Bô bô cl, úp hoài",
+				Emoji:      Tsk,
+				ReactEmoji: What,
+				Url:        "",
+				HasRef:     true,
+			},
+			{
+				Message:    "Bô này có vẻ thơm",
+				Emoji:      SexyPika,
+				ReactEmoji: Aragorn,
+				Url:        "",
+				TagUsers:   []string{EchChanID},
+			},
+			{
+				Message:    "Bô bô cc",
+				Emoji:      WibuSpank,
+				ReactEmoji: Tsk,
+				Url:        "",
+			},
+		},
+		"chửi": {
+			{
+				ReactEmoji: WibuSpank,
+				Url:        "https://cdn.discordapp.com/attachments/872829278872567890/1162264345925931028/image.png?ex=653b4e05&is=6528d905&hm=32f1575374d725bd3b6a4bb70cab4b2ff0b5c988e93f29bb16885a12dcabf72b&",
+			},
+			//{
+			//	Message:    "ngộ ha, tự nhiên chửi người ta",
+			//	Emoji:      Tsk,
+			//	ReactEmoji: WibuSpank,
+			//	Url:        "",
+			//	HasRef:     true,
+			//},
+		},
+		"long xiên,póng chan,pông nan": {
 			{
 				Message:    "Hãy để trú yên, trú cần thời gian đi úp bô",
 				Emoji:      Tsk,
@@ -34,25 +85,7 @@ var (
 				Url:        "",
 			},
 		},
-	}
-
-	PongMessages = map[string][]message.TargetMessage{
-		"chửi": {
-			{
-				Message:    "đồ đĩ",
-				Emoji:      Tsk,
-				ReactEmoji: Aragorn,
-				Url:        "",
-				HasRef:     true,
-			},
-			{
-				Message:    "ngộ ha, tự nhiên chửi người ta",
-				Emoji:      Tsk,
-				ReactEmoji: Aragorn,
-				Url:        "",
-			},
-		},
-		"join fast,đâm,theo": {
+		"join fast": {
 			{
 				Message:    "Có cho tiền không mà kêu theo?",
 				Emoji:      Tsk,
@@ -66,109 +99,12 @@ var (
 				ReactEmoji: Aragorn,
 				Url:        "",
 			},
-		},
-		"úp bô,úp pô,bô,pô": {
 			{
-				Message:    "Bô bô cl, úp hoài",
-				Emoji:      Tsk,
-				ReactEmoji: What,
-				Url:        "",
-				HasRef:     true,
-			},
-			{
-				Message:    "Bô này có vẻ thơm",
-				Emoji:      SexyPika,
-				ReactEmoji: Aragorn,
-				Url:        "",
-				TagUser:    EchChanID,
-			},
-			{
-				Message:    "Bô bô cc",
-				Emoji:      WibuSpank,
-				ReactEmoji: Tsk,
-				Url:        "",
-			},
-		},
-		"safe": {
-			{
-				Message:    "Mua bcs chưa?",
-				Emoji:      SexyPika,
-				ReactEmoji: What,
-				Url:        "",
-				HasRef:     true,
-			},
-		},
-		"đĩ,bitch,đũy,dũy,dĩ,đỷ,đủy,dủy,dỉ": {
-			{
-				Message:    "đồ đĩ",
-				Emoji:      Tsk,
-				ReactEmoji: Aragorn,
-				Url:        "",
-			},
-		},
-	}
-
-	CommunityMessages = map[string][]message.TargetMessage{
-		"bd,đĩ đực,gei lord, gay,gei": {
-			{
-				Message:    "kingtomb",
-				Emoji:      Tsk,
+				Message:    "Anh theo em theo",
+				Emoji:      SexyPepe,
 				ReactEmoji: Aragorn,
 				Url:        "",
 				HasRef:     true,
-			},
-		},
-		"nghèo": {
-			{
-				Message:    "Nghèo thì đứng sang 1 bên?",
-				Emoji:      Tsk,
-				ReactEmoji: Aragorn,
-				Url:        "",
-				HasRef:     true,
-			},
-			{
-				Message:    "Anh nghèo em cũng chẳng hơn anh...LK Nghèo Trường Vũ",
-				Emoji:      TooSad,
-				ReactEmoji: Ree,
-				Url:        "",
-				HasRef:     true,
-			},
-		},
-		"úp bô,úp pô,bô,pô": {
-			{
-				Message:    "Bô bô cl, úp hoài",
-				Emoji:      Tsk,
-				ReactEmoji: What,
-				Url:        "",
-				HasRef:     true,
-			},
-			{
-				Message:    "Bô này có vẻ thơm",
-				Emoji:      SexyPika,
-				ReactEmoji: Aragorn,
-				Url:        "",
-				TagUser:    EchChanID,
-			},
-			{
-				Message:    "Bô bô cc",
-				Emoji:      WibuSpank,
-				ReactEmoji: Tsk,
-				Url:        "",
-			},
-		},
-		"chửi": {
-			{
-				Message:    "đồ đĩ",
-				Emoji:      Tsk,
-				ReactEmoji: Aragorn,
-				Url:        "",
-				HasRef:     true,
-			},
-			{
-				Message:    "ngộ ha, tự nhiên chửi người ta",
-				Emoji:      Tsk,
-				ReactEmoji: Aragorn,
-				Url:        "",
 			},
 		},
 	}

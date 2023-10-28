@@ -4,6 +4,8 @@ import (
 	"context"
 	discord "github.com/bwmarrin/discordgo"
 	"github.com/rs/zerolog"
+	"strings"
+
 	"kaeru.chan/voz/constant"
 	"kaeru.chan/voz/message"
 	"kaeru.chan/voz/server"
@@ -11,47 +13,64 @@ import (
 )
 
 const (
-	communityLogTag = "Community"
+	communityLogTag = "GeneralReply"
 )
 
-func HandleMessage(ctx context.Context, config *server.Config, _ *server.TargetUser, s *discord.Session, r *discord.MessageCreate) {
-	logger := zerolog.Ctx(ctx)
-	if !utils.StringContains(config.Channels, r.ChannelID) {
-		logger.Info().Str(constant.AutoRepLogTag, communityLogTag).Msgf("Not in appropriate channel")
+var (
+	config *server.Config
+)
+
+type GeneralAutoReply struct{}
+
+func init() {
+	config = server.AppConfig
+}
+
+func (g *GeneralAutoReply) SendReply(ctx context.Context, s *discord.Session, r *discord.MessageCreate) {
+	log := zerolog.Ctx(ctx).With().Str(communityLogTag, "SendReply").Logger()
+	if !utils.ShouldReply(ctx, config) {
+		log.Warn().Msgf("Reject reply user: %s", r.Author.Username)
 		return
 	}
 
-	prob := 0.4
-	//if r.Author.ID == constant.EchChanID {
-	//	prob = 1.0
-	//}
-
-	if !utils.ShouldReply(ctx, prob, 100) {
-		logger.Info().Str(constant.AutoRepLogTag, communityLogTag).Msgf("You're lucky this time %s", r.Author.Username)
-		return
-	}
-
-	logger.Info().Str(constant.AutoRepLogTag, communityLogTag).Msg("Community detected, get messages")
+	log.Info().Msgf("Accept reply user: %s", r.Author.Username)
 	msg := message.PickMessage(message.DetectMessage(constant.CommunityMessages, r))
+
 	if msg == nil {
-		logger.Warn().Str(constant.AutoRepLogTag, communityLogTag).Msg("Don't know what to say, skip")
+		log.Warn().Msg("Message template not found")
 		return
+	}
+
+	if taggedUsers := utils.ExtractTaggedUserID(ctx, r.Content, config); taggedUsers != nil {
+		msg.TagUsers = taggedUsers
 	}
 
 	if msg.ReactEmoji != "" {
 		if err := s.MessageReactionAdd(r.ChannelID, r.ID, msg.ReactEmoji); err != nil {
-			logger.Error().Str(constant.AutoRepLogTag, communityLogTag).Msgf("Unable to react message", err.Error())
+			log.Error().Err(err).Msgf("Unable to react message")
 		}
 	}
 
 	var sendMsgErr error
+	msgToSend := &discord.MessageEmbed{
+		Description: msg.Build(),
+		Image: &discord.MessageEmbedImage{
+			URL: msg.Url,
+		},
+	}
+
+	if strings.Contains(r.Content, "chửi") && msg.Build() == "" {
+		msg.TagUsers = []string{r.Author.ID}
+		msgToSend.Description = msg.Build()
+	}
+
 	if msg.HasRef {
-		_, sendMsgErr = s.ChannelMessageSendReply(r.ChannelID, msg.Build(), r.Reference())
+		_, sendMsgErr = s.ChannelMessageSendEmbedReply(r.ChannelID, msgToSend, r.Reference())
 	} else {
-		_, sendMsgErr = s.ChannelMessageSend(r.ChannelID, msg.Build())
+		_, sendMsgErr = s.ChannelMessageSendEmbed(r.ChannelID, msgToSend)
 	}
 
 	if sendMsgErr != nil {
-		logger.Error().Str(constant.AutoRepLogTag, communityLogTag).Msgf("Unable to reply message", sendMsgErr.Error())
+		log.Error().Err(sendMsgErr).Msgf("Unable to reply message", sendMsgErr.Error())
 	}
 }
