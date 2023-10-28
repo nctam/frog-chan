@@ -37,10 +37,10 @@ func readConfig() *Config {
 	}
 
 	if config.Env == "test" {
-		config.Probability = 0.3
-		config.UniversalSet = 100
+		config.Probability = 1
+		config.UniversalSet = 1
 		config.Channels = config.Channels[:1] // use test channel only
-		config.ExcludedUsers = make([]string, 0)
+		//config.ExcludedUsers = make([]string, 0)
 	}
 
 	logger.Debug().Msg("End loading appConfig")

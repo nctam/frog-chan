@@ -2,13 +2,9 @@ package constant
 
 import "kaeru.chan/voz/message"
 
-const (
-	MessagePattern = "(\\s?)(chửi|đĩ|ktv|buscu|póng chan|pông nan|long xiên|join fast|bô|safe|bd|nghèo)(\\s?)"
-)
-
 var (
 	CommunityMessages = map[string][]message.Template{
-		"bd": {
+		"bê đê,pê đê,buê đuê": {
 			{
 				Message:    "kingtomb",
 				Emoji:      Tsk,
@@ -39,13 +35,6 @@ var (
 				Url:        "",
 				HasRef:     true,
 			},
-			{
-				Message:    "Anh nghèo em cũng chẳng hơn anh...LK Nghèo Trường Vũ",
-				Emoji:      TooSad,
-				ReactEmoji: Ree,
-				Url:        "",
-				HasRef:     true,
-			},
 		},
 		"bô": {
 			{
@@ -60,7 +49,7 @@ var (
 				Emoji:      SexyPika,
 				ReactEmoji: Aragorn,
 				Url:        "",
-				TagUser:    EchChanID,
+				TagUsers:   []string{EchChanID},
 			},
 			{
 				Message:    "Bô bô cc",
@@ -71,16 +60,16 @@ var (
 		},
 		"chửi": {
 			{
-				ReactEmoji: Aragorn,
+				ReactEmoji: WibuSpank,
 				Url:        "https://cdn.discordapp.com/attachments/872829278872567890/1162264345925931028/image.png?ex=653b4e05&is=6528d905&hm=32f1575374d725bd3b6a4bb70cab4b2ff0b5c988e93f29bb16885a12dcabf72b&",
 			},
-			{
-				Message:    "ngộ ha, tự nhiên chửi người ta",
-				Emoji:      Tsk,
-				ReactEmoji: Aragorn,
-				Url:        "",
-				HasRef:     true,
-			},
+			//{
+			//	Message:    "ngộ ha, tự nhiên chửi người ta",
+			//	Emoji:      Tsk,
+			//	ReactEmoji: WibuSpank,
+			//	Url:        "",
+			//	HasRef:     true,
+			//},
 		},
 		"long xiên,póng chan,pông nan": {
 			{

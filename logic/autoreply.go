@@ -4,6 +4,7 @@ import (
 	"context"
 	discord "github.com/bwmarrin/discordgo"
 	"github.com/rs/zerolog"
+	"strings"
 
 	"kaeru.chan/voz/constant"
 	"kaeru.chan/voz/message"
@@ -40,8 +41,8 @@ func (g *GeneralAutoReply) SendReply(ctx context.Context, s *discord.Session, r 
 		return
 	}
 
-	if taggedUser := utils.ExtractTaggedUserID(ctx, r.Content, config); taggedUser != "" {
-		msg.TagUser = taggedUser
+	if taggedUsers := utils.ExtractTaggedUserID(ctx, r.Content, config); taggedUsers != nil {
+		msg.TagUsers = taggedUsers
 	}
 
 	if msg.ReactEmoji != "" {
@@ -57,6 +58,12 @@ func (g *GeneralAutoReply) SendReply(ctx context.Context, s *discord.Session, r 
 			URL: msg.Url,
 		},
 	}
+
+	if strings.Contains(r.Content, "chửi") && msg.Build() == "" {
+		msg.TagUsers = []string{r.Author.ID}
+		msgToSend.Description = msg.Build()
+	}
+
 	if msg.HasRef {
 		_, sendMsgErr = s.ChannelMessageSendEmbedReply(r.ChannelID, msgToSend, r.Reference())
 	} else {

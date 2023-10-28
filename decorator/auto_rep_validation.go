@@ -6,7 +6,6 @@ import (
 	"github.com/rs/zerolog"
 	"regexp"
 
-	"kaeru.chan/voz/constant"
 	"kaeru.chan/voz/logic"
 	"kaeru.chan/voz/server"
 	"kaeru.chan/voz/utils"
@@ -37,7 +36,7 @@ func Validate(f logic.AutoReplyFunc, v ...AutoReplyValidation) logic.AutoReplyFu
 func ValidateMessage(f logic.AutoReplyFunc) logic.AutoReplyFunc {
 	return func(ctx context.Context, s *discord.Session, c *discord.MessageCreate) {
 		log := zerolog.Ctx(ctx).With().Str(logTag, "ValidateMessage").Logger()
-		match, err := regexp.MatchString(constant.MessagePattern, c.Content)
+		match, err := regexp.MatchString(config.MessagePattern, c.Content)
 		if err != nil || !match {
 			log.Warn().Msgf("Unsupported message: %s", c.Content)
 			return
@@ -67,6 +66,20 @@ func ValidateExcludedUser(f logic.AutoReplyFunc) logic.AutoReplyFunc {
 			return
 		}
 		log.Info().Msgf("Supported user: %s", c.Author.Username)
+		f(ctx, s, c)
+	}
+}
+
+func ValidateCurseRequest(f logic.AutoReplyFunc) logic.AutoReplyFunc {
+	return func(ctx context.Context, s *discord.Session, c *discord.MessageCreate) {
+		log := zerolog.Ctx(ctx).With().Str(logTag, "ValidateExcludedUser").Logger()
+		curseMsgPattern := "(<@1161895776780304415> chửi <@[0-9]+>)(\\s?)"
+		match, err := regexp.MatchString(curseMsgPattern, c.Content)
+		if err != nil || !match {
+			log.Warn().Msgf("Unsupported message: %s", c.Content)
+			return
+		}
+		log.Info().Msgf("Supported message: %s", c.Content)
 		f(ctx, s, c)
 	}
 }

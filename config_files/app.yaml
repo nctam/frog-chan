@@ -9,8 +9,10 @@ channels:
   - 1100273795962507376 # i-to-vua-moi-nghe
 
 excluded-users:
-  - 1161895776780304415
-#  - 666563738370834434
+  - 1161895776780304415 # frog-chan
+#  - 666563738370834434 # tcmik
 
 probability: 0.3
 universal-set: 100
+
+message-pattern: '(\s?)(chửi|đĩ|ktv|buscu|póng chan|pông nan|long xiên|join fast|bô|safe|bê đê|pê đê|buê đuê|nghèo)(\s?)'
