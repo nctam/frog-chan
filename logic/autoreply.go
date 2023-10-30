@@ -2,9 +2,10 @@ package logic
 
 import (
 	"context"
+	"strings"
+
 	discord "github.com/bwmarrin/discordgo"
 	"github.com/rs/zerolog"
-	"strings"
 
 	"kaeru.chan/voz/constant"
 	"kaeru.chan/voz/message"
@@ -71,6 +72,6 @@ func (g *GeneralAutoReply) SendReply(ctx context.Context, s *discord.Session, r 
 	}
 
 	if sendMsgErr != nil {
-		log.Error().Err(sendMsgErr).Msgf("Unable to reply message", sendMsgErr.Error())
+		log.Error().Err(sendMsgErr).Msgf("Unable to reply message: %v", sendMsgErr.Error())
 	}
 }

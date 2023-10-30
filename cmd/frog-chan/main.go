@@ -2,10 +2,12 @@ package main
 
 import (
 	"context"
-	discord "github.com/bwmarrin/discordgo"
-	"github.com/rs/zerolog"
 	"os"
 	"os/signal"
+	"syscall"
+
+	discord "github.com/bwmarrin/discordgo"
+	"github.com/rs/zerolog"
 
 	"kaeru.chan/voz/handlers"
 	"kaeru.chan/voz/server"
@@ -41,8 +43,9 @@ func main() {
 			logger.Error().Msg("Failed to close session")
 		}
 	}(session)
+
 	stop := make(chan os.Signal, 1)
-	signal.Notify(stop, os.Interrupt)
+	signal.Notify(stop, syscall.SIGTERM, os.Interrupt)
 	<-stop
 	logger.Debug().Msg("Graceful shutdown")
 }
