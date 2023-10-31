@@ -72,6 +72,6 @@ func (g *GeneralAutoReply) SendReply(ctx context.Context, s *discord.Session, r 
 	}
 
 	if sendMsgErr != nil {
-		log.Error().Err(sendMsgErr).Msgf("Unable to reply message: %v", sendMsgErr.Error())
+		log.Error().Err(sendMsgErr).Msg("Unable to reply message")
 	}
 }
