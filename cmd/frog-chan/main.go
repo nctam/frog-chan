@@ -20,6 +20,10 @@ var (
 	autoReact    = handlers.AutoReact
 )
 
+const (
+	panicMsg = "Some problem when start app!"
+)
+
 func init() {
 	config = server.AppConfig
 }
@@ -32,8 +36,10 @@ func main() {
 	session.AddHandler(readyHandler(ctx))
 	session.AddHandler(autoRep(ctx))
 	session.AddHandler(autoReact(ctx))
+
 	if err := session.Open(); err != nil {
 		logger.Error().Msg("Failed to open session")
+		panic(panicMsg)
 	}
 
 	handlers.RegisterHealthCheck()
@@ -47,5 +53,5 @@ func main() {
 	stop := make(chan os.Signal, 1)
 	signal.Notify(stop, syscall.SIGTERM, os.Interrupt)
 	<-stop
-	logger.Debug().Msg("Graceful shutdown")
+	logger.Debug().Msg("Graceful shutdown!!")
 }

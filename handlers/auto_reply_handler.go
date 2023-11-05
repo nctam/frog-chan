@@ -17,18 +17,17 @@ var (
 	messageValidator      = decorator.ValidateMessage
 	excludedUserValidator = decorator.ValidateExcludedUser
 	curseRequestValidator = decorator.ValidateCurseRequest
-	// validate              = decorator.Validate
+	// default validate
+	validate = fp.Compose3(channelValidator, messageValidator, excludedUserValidator)
 )
 
 func AutoReply(ctx context.Context) func(s *discord.Session, r *discord.MessageCreate) {
 	return func(s *discord.Session, r *discord.MessageCreate) {
-		var f func(logic.AutoReplyFunc) logic.AutoReplyFunc
+
 		if strings.Contains(r.Content, "chửi") {
-			f = fp.Compose4(channelValidator, messageValidator, excludedUserValidator, curseRequestValidator)
-		} else {
-			f = fp.Compose3(channelValidator, messageValidator, excludedUserValidator)
+			validate = fp.Compose2(validate, curseRequestValidator)
 		}
 
-		f(autoRep.SendReply)(ctx, s, r)
+		validate(autoRep.SendReply)(ctx, s, r)
 	}
 }
