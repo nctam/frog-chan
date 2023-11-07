@@ -4,6 +4,8 @@ import (
 	"context"
 	"strings"
 
+	"golang.org/x/exp/rand"
+
 	discord "github.com/bwmarrin/discordgo"
 	"github.com/rs/zerolog"
 
@@ -17,11 +19,12 @@ const (
 	communityLogTag = "GeneralReply"
 )
 
+type GeneralAutoReply struct{}
+
 var (
 	config *server.Config
+	_      AutoReply = &GeneralAutoReply{}
 )
-
-type GeneralAutoReply struct{}
 
 func init() {
 	config = server.AppConfig
@@ -62,6 +65,7 @@ func (g *GeneralAutoReply) SendReply(ctx context.Context, s *discord.Session, r 
 
 	if strings.Contains(r.Content, "chửi") && msg.Build() == "" {
 		msg.TagUsers = []string{r.Author.ID}
+		msg.Message = constant.MsgReplyTagged[rand.Intn(len(constant.MsgReplyTagged))]
 		msgToSend.Description = msg.Build()
 	}
 
