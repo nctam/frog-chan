@@ -1,0 +1,21 @@
+name: Pipeline to lint Go file
+on:
+  pull_request:
+    paths:
+      - "**.go"
+  workflow_call:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  golint:
+    name: Lint go code
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: v1.53
