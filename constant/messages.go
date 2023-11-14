@@ -110,4 +110,9 @@ var (
 			},
 		},
 	}
+	MsgReplyTagged = []string{
+		"Không hay ho gì mà tag",
+		"Thích bị tag không?",
+		"Làm gì mà tag?",
+	}
 )

@@ -2,9 +2,11 @@ package handlers
 
 import (
 	"context"
-	discord "github.com/bwmarrin/discordgo"
 	"strings"
 
+	discord "github.com/bwmarrin/discordgo"
+
+	fp "github.com/repeale/fp-go"
 	"kaeru.chan/voz/decorator"
 	"kaeru.chan/voz/logic"
 )
@@ -15,20 +17,17 @@ var (
 	messageValidator      = decorator.ValidateMessage
 	excludedUserValidator = decorator.ValidateExcludedUser
 	curseRequestValidator = decorator.ValidateCurseRequest
-	validate              = decorator.Validate
+	// default validate
+	validate = fp.Compose3(channelValidator, messageValidator, excludedUserValidator)
 )
 
 func AutoReply(ctx context.Context) func(s *discord.Session, r *discord.MessageCreate) {
 	return func(s *discord.Session, r *discord.MessageCreate) {
-		validations := []decorator.AutoReplyValidation{
-			channelValidator,
-			messageValidator,
-			excludedUserValidator,
-		}
+
 		if strings.Contains(r.Content, "chửi") {
-			validations = append(validations, curseRequestValidator)
+			validate = fp.Compose2(validate, curseRequestValidator)
 		}
-		f := validate(autoRep.SendReply, validations...)
-		f(ctx, s, r)
+
+		validate(autoRep.SendReply)(ctx, s, r)
 	}
 }

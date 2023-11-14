@@ -2,9 +2,10 @@ package logic
 
 import (
 	"context"
+	"time"
+
 	discord "github.com/bwmarrin/discordgo"
 	"github.com/rs/zerolog"
-	"time"
 
 	"istio.io/pkg/cache"
 	"kaeru.chan/voz/constant"
@@ -17,11 +18,12 @@ const (
 	cacheTTL        = 60
 )
 
+type GeneralAutoReact struct{}
+
 var (
 	autoReactCache cache.ExpiringCache
+	_              AutoReact = &GeneralAutoReact{}
 )
-
-type GeneralAutoReact struct{}
 
 func (g *GeneralAutoReact) SendReact(ctx context.Context, s *discord.Session, r *discord.MessageReactionAdd) {
 	log := zerolog.Ctx(ctx).With().Str(autoReactLogTag, "SendReact").Logger()
