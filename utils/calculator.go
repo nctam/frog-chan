@@ -40,7 +40,7 @@ func ShouldReply(ctx context.Context, userID string, config *server.Config) bool
 	return config.Env == "test" || decision
 }
 
-func ShouldRename(ctx context.Context, userID string, config *server.Config) bool {
+func ShouldRename(ctx context.Context, config *server.Config) bool {
 	logger := zerolog.Ctx(ctx).With().Str(logTag, "ShouldRename").Logger()
 	counter, decision := makeDecision(config.Probability, config.UniversalSet)
 	logger.Info().Msgf("Total votes: %d ==> Rename decision: %v", counter, decision)

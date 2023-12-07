@@ -10,3 +10,5 @@ const (
 const (
 	EchChanID = "666563738370834434"
 )
+
+var MemberNickNames = []string{"", "", "", ""}
