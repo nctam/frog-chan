@@ -11,4 +11,4 @@ const (
 	EchChanID = "666563738370834434"
 )
 
-var MemberNickNames = []string{"", "", "", ""}
+var MemberNickNames = []string{"Em cũng bị đần", "Chấn bé đù", "Đần không phải tội", "Đần như bot"}

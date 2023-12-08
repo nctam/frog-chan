@@ -10,6 +10,7 @@ import (
 	"github.com/rs/zerolog/log"
 	"kaeru.chan/voz/server"
 
+	"golang.org/x/exp/rand"
 	constant "kaeru.chan/voz/constant"
 	internal "kaeru.chan/voz/message"
 )
@@ -41,8 +42,8 @@ func (g *GeneralAutoRename) Rename(ctx context.Context, s *discord.Session, r *d
 	log := zerolog.Ctx(ctx).With().Str(communityLogRename, "Rename").Logger()
 	log.Info().Msgf("Prepare rename user: %s", r.Author.Username)
 
-	oldName := r.Message.Member.Nick
-	newName := constant.MemberNickNames[0]
+	oldName := r.Member.Nick
+	newName := constant.MemberNickNames[rand.Intn(len(constant.MsgReplyTagged))]
 
 	nick := NickName{
 		oldNick: oldName,
