@@ -10,4 +10,5 @@ type Config struct {
 	MessagePattern string   `yaml:"message-pattern"`
 	PriorUsers     []string `yaml:"prior-users"`
 	Bots           []string `yaml:"bots"`
+	IotioPattern   string   `yaml:"iotio-pattern"`
 }

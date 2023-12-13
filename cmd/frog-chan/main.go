@@ -18,6 +18,7 @@ var (
 	readyHandler = handlers.Ready
 	autoRep      = handlers.AutoReply
 	autoReact    = handlers.AutoReact
+	autoRename   = handlers.AutoRename
 )
 
 const (
@@ -36,6 +37,7 @@ func main() {
 	session.AddHandler(readyHandler(ctx))
 	session.AddHandler(autoRep(ctx))
 	session.AddHandler(autoReact(ctx))
+	session.AddHandler(autoRename(ctx))
 
 	if err := session.Open(); err != nil {
 		logger.Error().Msg("Failed to open session")

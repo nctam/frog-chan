@@ -23,3 +23,4 @@ probability: 0.2
 universal-set: 100
 
 message-pattern: '(\s?)(chửi|đĩ|ktv|buscu|póng chan|pông nan|long xiên|join fast|bô|safe|bê đê|pê đê|buê đuê|nghèo)(\s?)'
+iotio-pattern: '(\s?)(đần|ngu|thiểu năng|Đần)(\s?)'
