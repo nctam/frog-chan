@@ -42,7 +42,11 @@ func (g *GeneralAutoRename) Rename(ctx context.Context, s *discord.Session, r *d
     log := zerolog.Ctx(ctx).With().Str(communityLogRename, "Rename").Logger()
     log.Info().Msgf("Prepare rename user: %s", r.Author.Username)
 
-    oldName := r.Member.User.ID
+    if r.Author.ID == constant.Bot {
+        return
+    }
+
+    oldName := r.Author.ID
     newName := constant.MemberNickNames[rand.Intn(len(constant.MsgReplyTagged))]
 
     nick := NickName{
