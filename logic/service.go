@@ -14,4 +14,8 @@ type AutoReact interface {
 	SendReact(ctx context.Context, s *discord.Session, r *discord.MessageReactionAdd)
 }
 
+type AutoRename interface {
+	Rename(context.Context, *discord.Session, *discord.MessageCreate)
+}
+
 type AutoReplyFunc func(context.Context, *discord.Session, *discord.MessageCreate)
