@@ -94,5 +94,4 @@ func (g *GeneralAutoRename) RollbackName(ctx context.Context, s *discord.Session
 	if value != nil {
 		cacheNickName.Remove(nick.userId)
 	}
-	return
 }
