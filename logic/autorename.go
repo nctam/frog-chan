@@ -71,8 +71,9 @@ func (g *GeneralAutoRename) Rename(ctx context.Context, s *discord.Session, r *d
 	}
 
 	cacheNickName.Set(nick.userId, 1)
+	r.Message.Member.Nick = nick.newNick
 	msg := internal.Template{
-		Message: fmt.Sprintf("<@%s> đổi tên <@%s> thành %s", config.Bots[0], nick.userId, nick.newNick),
+		Message: fmt.Sprintf("vì tội phỉ báng nên bị đổi tên <@%s> ", nick.userId),
 	}
 
 	g.SendMsgRename(ctx, s, r, msg)
@@ -85,8 +86,9 @@ func (g *GeneralAutoRename) RollbackName(ctx context.Context, s *discord.Session
 	log := zerolog.Ctx(ctx).With().Str(communityLogRename, "Rename").Logger()
 	log.Info().Msgf("Prepare rename user: %s", r.Author.Username)
 
+	r.Message.Member.Nick = nick.oldNick
 	msg := internal.Template{
-		Message: fmt.Sprintf("<@%s> đổi tên <@%s> thành %s", config.Bots[0], nick.userId, nick.oldNick),
+		Message: fmt.Sprintf("Tha thứ cho lần này <@%s> ", nick.userId),
 	}
 	time.Sleep(5 * time.Minute)
 	g.SendMsgRename(ctx, s, r, msg)
