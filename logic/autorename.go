@@ -18,6 +18,7 @@ import (
 
 const (
 	communityLogRename = "GeneralRename"
+	timeTTL            = 5
 )
 
 var (
@@ -27,7 +28,7 @@ var (
 
 func init() {
 	config = server.AppConfig
-	cacheNickName = cache.NewTTL(5*cacheTTL*time.Second, 5*cacheTTL*time.Second)
+	cacheNickName = cache.NewTTL(timeTTL*time.Minute, timeTTL*time.Minute)
 }
 
 type GeneralAutoRename struct {
