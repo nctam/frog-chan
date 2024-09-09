@@ -28,6 +28,14 @@ var (
 				HasRef:     true,
 				TagUsers:   []string{"632196353354629160"},
 			},
+			{
+				Message:    "Buscu time.",
+				Emoji:      SexyPepe,
+				ReactEmoji: Aragorn,
+				Url:        "https://cdn.discordapp.com/attachments/872829278872567890/1281490049434914857/Screenshot_2024-09-06_at_12.43.35_PM.png?ex=66df33dc&is=66dde25c&hm=83bcaec5540bf698e756bcb16f724f04f688582a1bf621c9adb88457f7697304&",
+				HasRef:     true,
+				TagUsers:   []string{"367309546823221250"},
+			},
 		},
 		"nghèo": {
 			{
