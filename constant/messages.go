@@ -117,6 +117,16 @@ var (
 				HasRef:     true,
 			},
 		},
+		"nwng, nứng": {
+			{
+				Message:    "Thư kí nứng đến đây!",
+				Emoji:      SexyPepe,
+				ReactEmoji: SexyPika,
+				Url:        "",
+				HasRef:     true,
+				TagUsers:   []string{"376386392311201793"},
+			},
+		},
 	}
 	MsgReplyTagged = []string{
 		"Không hay ho gì mà tag",
