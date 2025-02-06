@@ -18,7 +18,7 @@ var (
                 ReactEmoji: Aragorn,
                 Url:        "https://media.discordapp.net/attachments/880833106297381014/1161861154839208007/image.png?ex=6539d685&is=65276185&hm=0efcc32bfdf9c1b4cbc511340d620598c28566a2900656def07dfc2b05d04efc&=&width=1520&height=312",
                 HasRef:     true,
-                TagUsers:   []string{"596658100841480192"},
+                TagUsers:   []string{MikeyID},
             },
             {
                 Message:    "Có người bảo em rằng",
@@ -26,7 +26,7 @@ var (
                 ReactEmoji: Aragorn,
                 Url:        "https://cdn.discordapp.com/attachments/880833106297381014/1164216566393622608/image.png?ex=6542682b&is=652ff32b&hm=3542d2fb4277756f3fed4de82f20715bd21f4e77bb79c8c4b229e70d8d65b68a&",
                 HasRef:     true,
-                TagUsers:   []string{"632196353354629160"},
+                TagUsers:   []string{PiChanID},
             },
             {
                 Message:    "Buscu time.",
@@ -34,7 +34,7 @@ var (
                 ReactEmoji: Aragorn,
                 Url:        "https://cdn.discordapp.com/attachments/872829278872567890/1281490049434914857/Screenshot_2024-09-06_at_12.43.35_PM.png?ex=66df33dc&is=66dde25c&hm=83bcaec5540bf698e756bcb16f724f04f688582a1bf621c9adb88457f7697304&",
                 HasRef:     true,
-                TagUsers:   []string{"367309546823221250"},
+                TagUsers:   []string{FonChanID},
             },
         },
         "nghèo": {
@@ -124,7 +124,21 @@ var (
                 ReactEmoji: SexyPika,
                 Url:        "",
                 HasRef:     true,
-                TagUsers:   []string{"376386392311201793"},
+                TagUsers:   []string{CaDuChanID},
+            },
+            {
+                Message:    "Có em, có em",
+                Emoji:      SexyPepe,
+                Url:        "",
+                HasRef:     true,
+                TagUsers:   []string{CaDuChanID},
+            },
+            {
+                Message:    "Muốn thành kẻ hiepdam !",
+                Emoji:      SexyPepe,
+                Url:        "https://cdn.discordapp.com/attachments/1048640658795155476/1336593591740534845/image.png?ex=67a50808&is=67a3b688&hm=9eaae88cfca506c821eba21dd140f8a12442710b0b045c73e1beb74ef164773a&",
+                HasRef:     true,
+                TagUsers:   []string{CaDuChanID},
             },
         },
     }
