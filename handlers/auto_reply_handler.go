@@ -2,13 +2,13 @@ package handlers
 
 import (
 	"context"
-	"strings"
 
 	discord "github.com/bwmarrin/discordgo"
 
 	fp "github.com/repeale/fp-go"
 	"kaeru.chan/voz/decorator"
 	"kaeru.chan/voz/logic"
+	"kaeru.chan/voz/utils"
 )
 
 var (
@@ -23,8 +23,7 @@ var (
 
 func AutoReply(ctx context.Context) func(s *discord.Session, r *discord.MessageCreate) {
 	return func(s *discord.Session, r *discord.MessageCreate) {
-
-		if strings.Contains(r.Content, "chửi") {
+		if utils.ExtractMessage("chửi", r.Content) {
 			validate = fp.Compose2(validate, curseRequestValidator)
 		}
 
