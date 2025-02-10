@@ -2,11 +2,12 @@ package utils
 
 import (
 	"context"
+	"regexp"
+	"strings"
+
 	"github.com/rs/zerolog"
 	"kaeru.chan/voz/constant"
 	"kaeru.chan/voz/server"
-	"regexp"
-	"strings"
 )
 
 const (
@@ -40,4 +41,13 @@ func ExtractTaggedUserID(ctx context.Context, msg string, config *server.Config)
 	}
 
 	return users
+}
+
+func ExtractMessage(pattern, msg string) bool {
+	match, err := regexp.MatchString(pattern, msg)
+	if err != nil || !match {
+		return false
+	}
+
+	return true
 }
