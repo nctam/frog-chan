@@ -4,6 +4,7 @@ import (
 	"context"
 
 	discord "github.com/bwmarrin/discordgo"
+	"github.com/rs/zerolog"
 
 	fp "github.com/repeale/fp-go"
 	"kaeru.chan/voz/decorator"
@@ -23,10 +24,14 @@ var (
 
 func AutoReply(ctx context.Context) func(s *discord.Session, r *discord.MessageCreate) {
 	return func(s *discord.Session, r *discord.MessageCreate) {
-		if utils.ExtractMessage("chửi", r.Content) {
+		pattern := "chửi"
+		log := zerolog.Ctx(ctx).With().Str(logTag, "AutoReply").Logger()
+		if utils.ExtractMessage(pattern, r.Content) {
+			log.Info().Msgf("Matching with pattern %v with message %v ", pattern, r.Content)
 			validate = fp.Compose2(validate, curseRequestValidator)
 		}
 
+		log.Info().Msgf("Unmatching with pattern %v with message %v ", pattern, r.Content)
 		validate(autoRep.SendReply)(ctx, s, r)
 	}
 }
