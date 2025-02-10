@@ -7,7 +7,7 @@ import (
 
 func TestExtractMessage(t *testing.T) {
 	expected := false
-	msgs := []string{"nwng", "bot lor chửi ech chan", "chửi"}
+	msgs := []string{"nwng", "bot lor chửi ech chan", "chửi", "nứng"}
 	for _, msg := range msgs {
 		output := ExtractMessage("chửi", msg)
 		if output != expected {
