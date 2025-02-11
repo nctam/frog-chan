@@ -9,4 +9,5 @@ const (
 	SexyPika  = "a:sexypika:869302137279090698"
 	SexyPepe  = "a:pepesexy:840894452338917397"
 	WibuSpank = "a:wibuspank:852781547017994242"
+	Nwng1     = "nung1:948265268428304434"
 )
