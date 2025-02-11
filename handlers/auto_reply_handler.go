@@ -19,10 +19,11 @@ var (
 	excludedUserValidator = decorator.ValidateExcludedUser
 	curseRequestValidator = decorator.ValidateCurseRequest
 	// default validate
-	validate = fp.Compose3(channelValidator, messageValidator, excludedUserValidator)
+	
 )
 
 func AutoReply(ctx context.Context) func(s *discord.Session, r *discord.MessageCreate) {
+    validate := fp.Compose3(channelValidator, messageValidator, excludedUserValidator)
 	return func(s *discord.Session, r *discord.MessageCreate) {
 		pattern := "chửi"
 		log := zerolog.Ctx(ctx).With().Str(logTag, "AutoReply").Logger()
