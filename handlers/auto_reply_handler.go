@@ -29,9 +29,9 @@ func AutoReply(ctx context.Context) func(s *discord.Session, r *discord.MessageC
 		if utils.ExtractMessage(pattern, r.Content) {
 			log.Info().Msgf("Matching with pattern %v with message %v ", pattern, r.Content)
 			validate = fp.Compose2(validate, curseRequestValidator)
-		}
-
-		log.Info().Msgf("Unmatching with pattern %v with message %v ", pattern, r.Content)
+		} else {
+            log.Info().Msgf("Unmatching with pattern %v with message %v ", pattern, r.Content)    
+        }
 		validate(autoRep.SendReply)(ctx, s, r)
 	}
 }
