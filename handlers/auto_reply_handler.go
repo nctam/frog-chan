@@ -18,11 +18,11 @@ var (
 	messageValidator      = decorator.ValidateMessage
 	excludedUserValidator = decorator.ValidateExcludedUser
 	curseRequestValidator = decorator.ValidateCurseRequest
-	// default validate
 	
 )
 
 func AutoReply(ctx context.Context) func(s *discord.Session, r *discord.MessageCreate) {
+    // default validate
     validate := fp.Compose3(channelValidator, messageValidator, excludedUserValidator)
 	return func(s *discord.Session, r *discord.MessageCreate) {
 		pattern := "chửi"
