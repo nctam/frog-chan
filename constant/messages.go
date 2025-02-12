@@ -133,11 +133,18 @@ var (
 				TagUsers: []string{FonChanID},
 			},
 			{
-				Message:  "Muốn thành kẻ hiepdam !",
+				Message:  "Muốn thành kẻ hiepdam!",
 				Emoji:    SexyPepe,
 				Url:      "https://cdn.discordapp.com/attachments/1048640658795155476/1336593591740534845/image.png?ex=67a50808&is=67a3b688&hm=9eaae88cfca506c821eba21dd140f8a12442710b0b045c73e1beb74ef164773a&",
 				HasRef:   false,
 				TagUsers: []string{CaDuChanID},
+			},
+			{
+				Message:    "Ai muốn nứng bước ra đây coi!",
+				ReactEmoji: Nwng1,
+				Url:        "https://media.discordapp.net/attachments/1048640658795155476/1338697210786746388/20250211_091914.png?ex=67ae00ae&is=67acaf2e&hm=4fa0a1ed4b9915eddce22111db9659e982313def4c94519798d726ab8331f2ac&=&format=webp&quality=lossless&width=738&height=359",
+				HasRef:     true,
+				TagUsers:   []string{PiChanID},
 			},
 		},
 	}
