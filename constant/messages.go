@@ -130,7 +130,7 @@ var (
 				Emoji:    SexyPepe,
 				Url:      "",
 				HasRef:   false,
-				TagUsers: []string{FonChanID},
+				TagUsers: []string{},
 			},
 			{
 				Message:  "Muốn thành kẻ hiepdam!",
@@ -145,6 +145,29 @@ var (
 				Url:        "https://media.discordapp.net/attachments/1048640658795155476/1338697210786746388/20250211_091914.png?ex=67ae00ae&is=67acaf2e&hm=4fa0a1ed4b9915eddce22111db9659e982313def4c94519798d726ab8331f2ac&=&format=webp&quality=lossless&width=738&height=359",
 				HasRef:     true,
 				TagUsers:   []string{PiChanID},
+			},
+			{
+				Message:    "Mất dái rồi",
+				ReactEmoji: Nwng1,
+				Url:        "https://cdn.discordapp.com/attachments/1048640658795155476/1335876517900849212/image.png?ex=67b19575&is=67b043f5&hm=91240650fa233f84429fdcca4a7cab3868db82c8028f6952bf168f2335d20052&",
+				HasRef:     true,
+				TagUsers:   []string{PiChanID},
+			},
+			{
+				Message:    "Biết đụ trên thùng xe không?",
+				ReactEmoji: Nwng1,
+				Url:        "https://cdn.discordapp.com/attachments/1048640658795155476/1337284647171784745/image.png?ex=67b16ee1&is=67b01d61&hm=f75657d916950337bed78923a3bb108b51c0bf4d66ca414c75c432707a62a984&",
+				HasRef:     true,
+				TagUsers:   []string{},
+			},
+		},
+		"tnt": {
+			{
+				Message:    "vinh ko phải tnt",
+				ReactEmoji: ThietLuon,
+				Url:        "https://media.discordapp.net/attachments/1048640658795155476/1335213961792196679/image0.jpg?ex=67b1cf67&is=67b07de7&hm=9978f51580024ebbffdd6bc47f0ebca7a7fbc9bb8c4a0eba5529f57823db83c1&=&format=webp&width=857&height=785",
+				HasRef:     true,
+				TagUsers:   []string{FonChanID},
 			},
 		},
 	}
