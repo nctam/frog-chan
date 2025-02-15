@@ -10,4 +10,5 @@ const (
 	SexyPepe  = "a:pepesexy:840894452338917397"
 	WibuSpank = "a:wibuspank:852781547017994242"
 	Nwng1     = "nung1:948265268428304434"
+	ThietLuon = "02plz:948255285074616380"
 )
