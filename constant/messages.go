@@ -220,6 +220,22 @@ var (
 				TagUsers: []string{FonChanID},
 			},
 		},
+		"địt": {
+			{
+				Message:  "đụ không trú",
+				Emoji:    Nwng1,
+				Url:      "https://media.discordapp.net/attachments/1048640658795155476/1344190073327063061/image0.jpg?ex=67c0020f&is=67beb08f&hm=a85a68dc416dd3c97fc0cd7e71f2a5832b13bff093b7a0b3a6af731baf853cfa&=&format=webp&width=685&height=873",
+				TagUsers: []string{FonChanID},
+			},
+		},
+		"nợ": {
+			{
+				Message:    "2k không phải 1k",
+				ReactEmoji: ThietLuon,
+				Url:        "https://media.discordapp.net/attachments/1048640658795155476/1329748359430406154/image.png?ex=67c0342a&is=67bee2aa&hm=598310b7101fe98e6c783656b3a5a8d56e4726b9f4e99bc1e9a2e87e0b1f47cf&=&format=webp&quality=lossless",
+				TagUsers:   []string{FonChanID},
+			},
+		},
 	}
 	MsgReplyTagged = []string{
 		"Không hay ho gì mà tag",
