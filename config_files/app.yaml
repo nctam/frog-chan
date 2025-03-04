@@ -7,6 +7,7 @@ channels:
   - 812559685416386590 # kopi-corner
   - 812166962607947867 # kee-bee-talk
   - 1100273795962507376 # i-to-vua-moi-nghe
+  - 1223495045253042187 # pichan zone thread
 
 excluded-users:
   - 1161895776780304415 # frog-chan
@@ -22,5 +23,5 @@ bots:
 probability: 0.2
 universal-set: 100
 
-message-pattern: '(\s?)(chửi|đĩ|ktv|buscu|póng chan|pông nan|long xiên|join fast|bô|safe|bê đê|pê đê|buê đuê|nghèo|nwng|nứng|tnt|sạc|bú|pú|bóng|póng|địt|nợ)(\s?)'
+message-pattern: '(\s?)(chửi|đĩ|ktv|buscu|póng chan|pông nan|long xiên|join fast|bô|safe|bê đê|pê đê|buê đuê|nghèo|nwng|nứng|tnt|sạc|bú|pú|bóng|póng|địt|nợ|tri sâm)(\s?)'
 iotio-pattern: '(\s?)(đần|ngu|thiểu năng|Đần)(\s?)'
