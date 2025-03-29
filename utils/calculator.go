@@ -2,7 +2,6 @@ package utils
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"github.com/rs/zerolog"
@@ -20,7 +19,6 @@ func makeDecision(probability float64, universal int) (int, bool) {
 	for i := 0; i < universal; i++ {
 		rand.Seed(uint64(time.Now().UnixNano()))
 		randValue := rand.Int()
-		fmt.Println(randValue)
 		if randValue%5 == 0 {
 			counter += 1
 		}

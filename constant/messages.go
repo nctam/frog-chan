@@ -184,6 +184,12 @@ var (
 				HasRef:   false,
 				TagUsers: []string{PongChanID},
 			},
+			{
+				Message:  "Đã bán ku cho",
+				Url:      "https://media.discordapp.net/attachments/1048640658795155476/1353283243268374580/image0.jpg?ex=67e8ffbb&is=67e7ae3b&hm=2d544d46b63a2b2f21bbca2ff7f609adfe2b1d24ef02d6b4d24e873125ba8526&=&format=webp&width=2358&height=560",
+				HasRef:   false,
+				TagUsers: []string{PongChanID},
+			},
 		},
 		"tnt": {
 			{
