@@ -65,7 +65,13 @@ func (g *GeneralAutoReply) SendReply(ctx context.Context, s *discord.Session, r 
 
 	if strings.Contains(r.Content, "chửi") && msg.Build() == "" {
 		msg.TagUsers = []string{r.Author.ID}
-		msg.Message = constant.MsgReplyTagged[rand.Intn(len(constant.MsgReplyTagged))]
+		msg.Message = constant.MsgReplyTagged[rand.Intn(len(constant.CommunityMessages))]
+		msgToSend.Description = msg.Build()
+	}
+
+	if strings.Contains(r.Content, "sạc") && msg.Build() == "" && r.Author.ID == constant.PongChanID {
+		msg.TagUsers = []string{r.Author.ID}
+		msg.Message = constant.MsgReplyTagged[rand.Intn(len(constant.CommunityMessages))]
 		msgToSend.Description = msg.Build()
 	}
 
