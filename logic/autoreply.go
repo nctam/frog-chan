@@ -69,12 +69,6 @@ func (g *GeneralAutoReply) SendReply(ctx context.Context, s *discord.Session, r 
 		msgToSend.Description = msg.Build()
 	}
 
-	if strings.Contains(r.Content, "sạc") && r.Author.ID == constant.PongChanID {
-		msg.TagUsers = []string{r.Author.ID}
-		msg.Message = constant.MsgReplyTagged[rand.Intn(len(constant.MsgReplyTagged))]
-		msgToSend.Description = msg.Build()
-	}
-
 	if msg.HasRef {
 		_, sendMsgErr = s.ChannelMessageSendEmbedReply(r.ChannelID, msgToSend, r.Reference())
 	} else {
