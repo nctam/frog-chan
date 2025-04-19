@@ -208,6 +208,13 @@ var (
 				Url:        "",
 				HasRef:     true,
 			},
+			{
+				Message:    "sạc ít thôi, nổ tung lonz đó",
+				Emoji:      Tsk,
+				ReactEmoji: Aragorn,
+				Url:        "",
+				HasRef:     true,
+			},
 		},
 		"póng,bóng": {
 			{
