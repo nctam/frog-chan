@@ -270,6 +270,20 @@ var (
                 TagUsers: []string{PongChanID},
             },
         },
+        "sự kiện 244": {
+            {
+                Message:    "Hỏi cc à",
+                Emoji:      ChichDien,
+                ReactEmoji: ChichDien,
+                HasRef:     true,
+            },
+            {
+                Message:    "Đây",
+                HasRef:     true,
+                Url:        "https://cdn.discordapp.com/attachments/1048640658795155476/1364978359741841528/Screenshot_2025-04-24-21-25-22-868_com.png?ex=680c4b69&is=680af9e9&hm=b975d50b7e7fbe67b42ae6bfabf81677a8e2b67fbfc06a819e0870d9e2faee29&",
+                ReactEmoji: WibuSpank,
+            },
+        },
     }
     MsgReplyTagged = []string{
         "Không hay ho gì mà tag",
