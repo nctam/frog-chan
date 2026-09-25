@@ -8,6 +8,9 @@ channels:
   - 812166962607947867 # kee-bee-talk
   - 1100273795962507376 # i-to-vua-moi-nghe
   - 1223495045253042187 # pichan zone thread
+  - 1231803652906287104 # póng đá
+  - 880833106297381014 # nói 6
+  - 841947255157293096 # zoo
 
 excluded-users:
   - 1161895776780304415 # frog-chan
@@ -24,4 +27,5 @@ probability: 0.2
 universal-set: 100
 
 message-pattern: '(\s?)(chửi|đĩ|ktv|buscu|póng chan|pông nan|long xiên|join fast|bô|safe|bê đê|pê đê|buê đuê|nghèo|nwng|nứng|tnt|sạc|bú|pú|bóng|póng|địt|nợ|tri sâm|sự kiện 244)(\s?)'
+video-url-pattern: 'https?://(?:www\.)?(?:facebook\.com/(?:watch/?\?v=|share/[rv]/|reel/|[^/]+/videos/|story\.php\?story_fbid=)[a-zA-Z0-9_\-&=?]+|youtube\.com/(?:watch\?v=|shorts/)[a-zA-Z0-9_-]{11}|youtu\.be/[a-zA-Z0-9_-]{11})'
 iotio-pattern: '(\s?)(đần|ngu|thiểu năng|Đần)(\s?)'
