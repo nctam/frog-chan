@@ -26,6 +26,6 @@ bots:
 probability: 0.2
 universal-set: 100
 
-message-pattern: '(\s?)(chửi|đĩ|ktv|buscu|póng chan|pông nan|long xiên|join fast|bô|safe|bê đê|pê đê|buê đuê|nghèo|nwng|nứng|tnt|sạc|bú|pú|bóng|póng|địt|nợ|tri sâm|sự kiện 244)(\s?)'
+message-pattern: '(?i)(^|[^\p{L}])(chửi|đĩ|ktv|buscu|póng chan|pông nan|long xiên|join fast|bô|safe|bê đê|pê đê|buê đuê|nghèo|nwng|nứng|tnt|sạc|bú|pú|bóng|póng|địt|nợ|tri sâm|sự kiện 244)($|[^\p{L}])'
 video-url-pattern: 'https?://(?:www\.)?(?:facebook\.com/(?:watch/?\?v=|share/[rv]/|reel/|[^/]+/videos/|story\.php\?story_fbid=)[a-zA-Z0-9_\-&=?]+|youtube\.com/(?:watch\?v=|shorts/)[a-zA-Z0-9_-]{11}|youtu\.be/[a-zA-Z0-9_-]{11})'
 iotio-pattern: '(\s?)(đần|ngu|thiểu năng|Đần)(\s?)'
