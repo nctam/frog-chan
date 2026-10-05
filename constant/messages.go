@@ -304,6 +304,14 @@ var (
 				ReactEmoji: WibuSpank,
 			},
 		},
+		"bot ngu": {
+			{
+				Message:    "Nói ai?",
+				Emoji:      ChichDien,
+				ReactEmoji: ChichDien,
+				HasRef:     true,
+			},
+		},
 	}
 	MsgReplyTagged = []string{
 		"Không hay ho gì mà tag",

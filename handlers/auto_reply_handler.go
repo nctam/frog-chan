@@ -4,13 +4,12 @@ import (
 	"context"
 
 	discord "github.com/bwmarrin/discordgo"
-	"github.com/rs/zerolog"
-
 	fp "github.com/repeale/fp-go"
+	"github.com/rs/zerolog"
 	"kaeru.chan/voz/decorator"
 	"kaeru.chan/voz/logic"
-	"kaeru.chan/voz/utils"
 	"kaeru.chan/voz/server"
+	"kaeru.chan/voz/utils"
 )
 
 var (
@@ -29,17 +28,17 @@ func AutoReply(ctx context.Context) func(s *discord.Session, r *discord.MessageC
 
 	return func(s *discord.Session, r *discord.MessageCreate) {
 		// default validate
-		validate := fp.Compose3(channelValidator, messageValidator, excludedUserValidator)
+		validate := fp.Compose2(channelValidator, excludedUserValidator)
 		pattern := "chửi"
 		log := zerolog.Ctx(ctx).With().Str(logTag, "AutoReply").Logger()
-        logMsg := "Unmatching with pattern --> '%v' with message --> '%v'"
+		logMsg := "Unmatching with pattern --> '%v' with message --> '%v'"
 		if utils.ExtractMessage(pattern, r.Content) {
-            logMsg = "Matching with pattern --> '%v' with message --> '%v'"
+			logMsg = "Matching with pattern --> '%v' with message --> '%v'"
 			validate = fp.Compose2(validate, curseRequestValidator)
-        }
-        if config.Env == "debug" {
-            log.Info().Msgf(logMsg, pattern, r.Content)
-        }
-        validate(autoRep.SendReply)(ctx, s, r)
+		}
+		if config.Env == "debug" {
+			log.Info().Msgf(logMsg, pattern, r.Content)
+		}
+		validate(autoRep.SendReply)(ctx, s, r)
 	}
 }
